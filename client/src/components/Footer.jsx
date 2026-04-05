@@ -1,7 +1,7 @@
 import React from 'react'
 import { assets } from '../assets/assets'
 import { Link } from 'react-router-dom'
-import Scribe_news_btn from '../improving/scribe_news_btn'
+import Scribe_news_btn from '../improving/Scribe_news_btn'
  
 
 const Footer = () => {
