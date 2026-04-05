@@ -7,8 +7,8 @@ import fs from 'fs'
 import pdf from 'pdf-parse/lib/pdf-parse.js'
 
 const AI = new OpenAI({
-    apiKey: process.env.GEMINI_API_KEY,
-    baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/"
+    apiKey: process.env.OPEN_AI_API_KEY,
+    baseURL: "https://models.inference.ai.azure.com"
 });
 
 export const generateArticle = async (req, res)=>{
@@ -23,7 +23,7 @@ export const generateArticle = async (req, res)=>{
         }
 
         const response = await AI.chat.completions.create({
-            model: "gemini-2.0-flash",
+            model: "gpt-4o",
             messages: [{
                     role: "user",
                     content: prompt,
@@ -67,7 +67,7 @@ export const generateBlogTitle = async (req, res)=>{
         }
 
         const response = await AI.chat.completions.create({
-            model: "gemini-2.0-flash",
+            model: "gpt-4o",
             messages: [{ role: "user", content: prompt, } ],
             temperature: 0.7,
             max_tokens: 100,
@@ -209,7 +209,7 @@ export const resumeReview = async (req, res)=>{
         const prompt = `Review the following resume and provide constructive feedback on its strengths, weaknesses, and areas for improvement. Resume Content:\n\n${pdfData.text}`
 
        const response = await AI.chat.completions.create({
-            model: "gemini-2.0-flash",
+            model: "gpt-4o",
             messages: [{ role: "user", content: prompt, } ],
             temperature: 0.7,
             max_tokens: 1000,
